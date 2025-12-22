@@ -37,8 +37,11 @@ nav a {
     transition: color 0.3s ease;
 }
 
-nav a:hover {
+nav a:hover,
+nav a:focus {
     color: #3498db;
+    outline: 2px solid #3498db;
+    outline-offset: 4px;
 }
 
 /* Hero Section */
