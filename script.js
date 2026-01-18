@@ -164,7 +164,7 @@ const animateOnScroll = new IntersectionObserver((entries) => {
 
 // Observe timeline items
 document.querySelectorAll('[data-animate]').forEach(element => {
-    observeOnScroll.observe(element);
+    animateOnScroll.observe(element);
 });
 
 // Observe stat cards
