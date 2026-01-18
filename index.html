@@ -3,74 +3,485 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio personnel - CV en ligne">
-    <title>Mon Portfolio</title>
+    <meta name="description" content="Gill D'Elia - Développeur .NET / DevOps Engineer expérimenté, spécialiste Azure, AWS, Microservices et CI/CD. Plus de 15 ans d'expérience dans le développement et l'architecture cloud.">
+    <meta name="keywords" content="Gill D'Elia, Développeur .NET, DevOps, Azure, AWS, Microservices, CI/CD, C#, Cloud Engineer">
+    <meta name="author" content="Gill D'Elia">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Gill D'Elia - Développeur .NET / DevOps Engineer">
+    <meta property="og:description" content="Spécialiste Azure | AWS | Microservices | CI/CD - Plus de 15 ans d'expérience">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gilldelia.github.io">
+    
+    <title>Gill D'Elia - Développeur .NET / DevOps Engineer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#skills">Compétences</a></li>
-                <li><a href="#contact">Contact</a></li>
+    <!-- Particles Background -->
+    <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+    <!-- Header Navigation -->
+    <header id="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <span class="logo-text">GD</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
     </header>
 
     <main>
-        <section id="hero">
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
             <div class="hero-content">
-                <h1>Bienvenue sur mon Portfolio</h1>
-                <p class="subtitle">Développeur passionné</p>
+                <div class="hero-profile">
+                    <div class="profile-image-wrapper">
+                        <div class="profile-image"></div>
+                    </div>
+                </div>
+                <h1 class="hero-title">Gill D'Elia</h1>
+                <h2 class="hero-subtitle">Développeur .NET / DevOps Engineer</h2>
+                <p class="hero-typing" id="typing-text"></p>
+                <div class="hero-cta">
+                    <a href="#experience" class="btn btn-primary">Voir mon parcours</a>
+                    <a href="#contact" class="btn btn-secondary">Me contacter</a>
+                </div>
             </div>
         </section>
 
-        <section id="about">
+        <!-- About Section -->
+        <section id="about" class="about-section">
             <div class="container">
-                <h2>À propos de moi</h2>
-                <p>
-                    Passionné par le développement web et les nouvelles technologies, 
-                    je crée des solutions innovantes et efficaces. Mon objectif est de 
-                    concevoir des applications qui répondent aux besoins des utilisateurs 
-                    tout en offrant une expérience optimale.
-                </p>
-            </div>
-        </section>
+                <h2 class="section-title">À propos</h2>
+                <div class="about-content">
+                    <p class="about-description">
+                        Développeur .NET et DevOps Engineer passionné avec plus de 15 ans d'expérience dans la conception 
+                        et le déploiement d'architectures cloud performantes. Spécialiste des migrations cloud (Azure, AWS), 
+                        des architectures microservices et des pipelines CI/CD. Expert en monitoring et optimisation 
+                        d'applications avec Datadog et Dynatrace.
+                    </p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card glass-card">
+                            <div class="stat-number" data-target="15">0</div>
+                            <div class="stat-label">Années d'expérience</div>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <div class="stat-number" data-target="10">0</div>
+                            <div class="stat-label">Projets majeurs</div>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <div class="stat-number" data-target="7">0</div>
+                            <div class="stat-label">Domaines d'expertise</div>
+                        </div>
+                    </div>
 
-        <section id="skills">
-            <div class="container">
-                <h2>Mes Compétences</h2>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <h3>Développement Web</h3>
-                        <p>HTML, CSS, JavaScript</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Backend</h3>
-                        <p>Node.js, Python</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Outils</h3>
-                        <p>Git, GitHub, VS Code</p>
+                    <div class="tech-badges">
+                        <span class="badge">C# .NET</span>
+                        <span class="badge">Azure</span>
+                        <span class="badge">AWS</span>
+                        <span class="badge">Microservices</span>
+                        <span class="badge">CI/CD</span>
+                        <span class="badge">Datadog</span>
+                        <span class="badge">Terraform</span>
+                        <span class="badge">Docker</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact">
+        <!-- Experience Section -->
+        <section id="experience" class="experience-section">
             <div class="container">
-                <h2>Contact</h2>
-                <p>N'hésitez pas à me contacter pour discuter de vos projets.</p>
-                <div class="contact-links">
-                    <a href="https://github.com/gilldelia" target="_blank" rel="noopener noreferrer" aria-label="GitHub (ouvre dans un nouvel onglet)">GitHub</a>
+                <h2 class="section-title">Expérience professionnelle</h2>
+                <div class="timeline">
+                    <!-- SeLoger.com -->
+                    <div class="timeline-item glass-card" data-animate>
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="company-logo">SL</div>
+                                <div class="timeline-info">
+                                    <h3 class="company-name">SeLoger.com</h3>
+                                    <p class="job-title">Ingénieur d'études</p>
+                                    <p class="job-period">Novembre 2020 - Présent</p>
+                                </div>
+                            </div>
+                            <ul class="achievements">
+                                <li>Migration des applications vers AWS avec architecture microservices</li>
+                                <li>Gestion complète de Datadog pour le monitoring et l'analyse des logs</li>
+                                <li>Développement d'APIs et de l'application MySelogerPro</li>
+                                <li>Infrastructure AWS: ALB, Lambda, API Gateway, CloudFront</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">Lambda</span>
+                                <span class="tech-tag">API Gateway</span>
+                                <span class="tech-tag">Datadog</span>
+                                <span class="tech-tag">C#</span>
+                                <span class="tech-tag">Microservices</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BetClic -->
+                    <div class="timeline-item glass-card" data-animate>
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="company-logo">BC</div>
+                                <div class="timeline-info">
+                                    <h3 class="company-name">BetClic</h3>
+                                    <p class="job-title">Ingénieur de recherche</p>
+                                    <p class="job-period">Février 2020 - Novembre 2020</p>
+                                </div>
+                            </div>
+                            <ul class="achievements">
+                                <li>Projet Merge: fusion des données pre-match et live</li>
+                                <li>Développement du microservice ScoreBoard</li>
+                                <li>Architecture serverless avec AWS Lambda et DynamoDB</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">Lambda</span>
+                                <span class="tech-tag">DynamoDB</span>
+                                <span class="tech-tag">C#</span>
+                                <span class="tech-tag">Microservices</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Edenred -->
+                    <div class="timeline-item glass-card" data-animate>
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="company-logo">ED</div>
+                                <div class="timeline-info">
+                                    <h3 class="company-name">Edenred</h3>
+                                    <p class="job-title">DevOps Engineer</p>
+                                    <p class="job-period">Mars 2018 - Janvier 2020</p>
+                                </div>
+                            </div>
+                            <ul class="achievements">
+                                <li>Implémentation des bonnes pratiques DevOps et ITIL</li>
+                                <li>Migration complète vers Azure (cloud public)</li>
+                                <li>Déploiement et configuration de Dynatrace pour le monitoring</li>
+                                <li>Développement Azure Functions et Web Apps</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Azure</span>
+                                <span class="tech-tag">Azure Functions</span>
+                                <span class="tech-tag">Dynatrace</span>
+                                <span class="tech-tag">DevOps</span>
+                                <span class="tech-tag">ITIL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Elior -->
+                    <div class="timeline-item glass-card" data-animate>
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="company-logo">EL</div>
+                                <div class="timeline-info">
+                                    <h3 class="company-name">Elior</h3>
+                                    <p class="job-title">Expert technique/fonctionnel</p>
+                                    <p class="job-period">Juin 2016 - Septembre 2017</p>
+                                </div>
+                            </div>
+                            <ul class="achievements">
+                                <li>Projet Helios 2 - Modernisation du système</li>
+                                <li>Product Owner Assistant</li>
+                                <li>Méthodologie Scrum, Visual Studio Team Services</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">C#</span>
+                                <span class="tech-tag">Scrum</span>
+                                <span class="tech-tag">VSTS</span>
+                                <span class="tech-tag">.NET</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Natixis -->
+                    <div class="timeline-item glass-card" data-animate>
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="company-logo">NX</div>
+                                <div class="timeline-info">
+                                    <h3 class="company-name">Natixis</h3>
+                                    <p class="job-title">Consultant</p>
+                                    <p class="job-period">2015 - 2016</p>
+                                </div>
+                            </div>
+                            <ul class="achievements">
+                                <li>Conseil et développement pour le secteur bancaire</li>
+                                <li>Solutions .NET pour applications critiques</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">C#</span>
+                                <span class="tech-tag">.NET</span>
+                                <span class="tech-tag">SQL Server</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Humanis -->
+                    <div class="timeline-item glass-card" data-animate>
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="company-logo">HU</div>
+                                <div class="timeline-info">
+                                    <h3 class="company-name">Humanis</h3>
+                                    <p class="job-title">Ingénieur d'études</p>
+                                    <p class="job-period">2014 - 2015</p>
+                                </div>
+                            </div>
+                            <ul class="achievements">
+                                <li>Développement d'applications pour le secteur de l'assurance</li>
+                                <li>Architecture et développement .NET</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">C#</span>
+                                <span class="tech-tag">.NET</span>
+                                <span class="tech-tag">SQL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Waresysteme -->
+                    <div class="timeline-item glass-card" data-animate>
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="company-logo">WS</div>
+                                <div class="timeline-info">
+                                    <h3 class="company-name">Waresysteme</h3>
+                                    <p class="job-title">Chef de projet logiciel</p>
+                                    <p class="job-period">2011 - 2012</p>
+                                </div>
+                            </div>
+                            <ul class="achievements">
+                                <li>Gestion de projets logiciels</li>
+                                <li>Management d'équipe et suivi budgétaire</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Gestion de projet</span>
+                                <span class="tech-tag">Management</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <h2 class="section-title">Compétences techniques</h2>
+                <div class="skills-grid">
+                    <!-- Languages & Frameworks -->
+                    <div class="skill-category glass-card" data-animate>
+                        <h3 class="category-title">
+                            <span class="icon">💻</span>
+                            Langages & Frameworks
+                        </h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span class="skill-name">C# .NET</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="95"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">ASP.NET MVC</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">TypeScript / JavaScript</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">SQL / Transact-SQL</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">HTML5 / CSS3</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cloud & DevOps -->
+                    <div class="skill-category glass-card" data-animate>
+                        <h3 class="category-title">
+                            <span class="icon">☁️</span>
+                            Cloud & DevOps
+                        </h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span class="skill-name">AWS (Lambda, DynamoDB, API Gateway)</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Azure (Functions, Web Apps, DevOps)</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Datadog / Dynatrace</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">CI/CD (CircleCI, Azure DevOps)</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Terraform / CloudFormation</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="80"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Architecture & Methods -->
+                    <div class="skill-category glass-card" data-animate>
+                        <h3 class="category-title">
+                            <span class="icon">🏗️</span>
+                            Architecture & Méthodes
+                        </h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span class="skill-name">Microservices</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Repository Pattern</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Scrum / Agile</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">ITIL</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="75"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Gitflow</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tools -->
+                    <div class="skill-category glass-card" data-animate>
+                        <h3 class="category-title">
+                            <span class="icon">🛠️</span>
+                            Outils & Technologies
+                        </h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span class="skill-name">Visual Studio / VS Code</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="95"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">GitHub / Azure DevOps</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Jira</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">TeamCity / Octopus</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="80"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Kibana</span>
+                                <div class="skill-bar"><div class="skill-progress" data-progress="75"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Domain Expertise -->
+                <div class="domains-section">
+                    <h3 class="domains-title">Domaines d'expertise</h3>
+                    <div class="domains-grid">
+                        <div class="domain-badge">🏦 Banque / Assurance</div>
+                        <div class="domain-badge">🎮 Gaming</div>
+                        <div class="domain-badge">🏠 Immobilier</div>
+                        <div class="domain-badge">🏥 Santé</div>
+                        <div class="domain-badge">🚗 Automobile</div>
+                        <div class="domain-badge">🍽️ Restauration</div>
+                        <div class="domain-badge">📊 Comptabilité</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Contact</h2>
+                <div class="contact-content">
+                    <p class="contact-intro">
+                        Intéressé par mon profil ? N'hésitez pas à me contacter pour discuter 
+                        de vos projets ou opportunités professionnelles.
+                    </p>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-card glass-card">
+                            <div class="contact-icon">📧</div>
+                            <h3>Email</h3>
+                            <a href="mailto:Gill.delia@outlook.com">Gill.delia@outlook.com</a>
+                        </div>
+                        
+                        <div class="contact-card glass-card">
+                            <div class="contact-icon">📱</div>
+                            <h3>Téléphone</h3>
+                            <a href="tel:0682823026">06 82 82 30 26</a>
+                        </div>
+                        
+                        <div class="contact-card glass-card">
+                            <div class="contact-icon">💼</div>
+                            <h3>GitHub</h3>
+                            <a href="https://github.com/gilldelia" target="_blank" rel="noopener noreferrer">github.com/gilldelia</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-cta">
+                        <a href="mailto:Gill.delia@outlook.com" class="btn btn-primary btn-large">Envoyer un message</a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Mon Portfolio. Tous droits réservés.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Gill D'Elia. Tous droits réservés.</p>
+                <div class="footer-links">
+                    <a href="mailto:Gill.delia@outlook.com" aria-label="Email">📧</a>
+                    <a href="https://github.com/gilldelia" target="_blank" rel="noopener noreferrer" aria-label="GitHub">💼</a>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
