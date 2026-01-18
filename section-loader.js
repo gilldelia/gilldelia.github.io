@@ -24,4 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadSection('experience', 'experience.html');
     await loadSection('skills', 'skills.html');
     await loadSection('contact', 'contact.html');
+    
+    // Dispatch a custom event to notify that all sections are loaded
+    window.dispatchEvent(new Event('sectionsLoaded'));
 });

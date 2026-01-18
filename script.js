@@ -61,47 +61,53 @@ window.addEventListener('scroll', () => {
 // ==========================================
 // Typing Effect for Hero Subtitle
 // ==========================================
-const typingText = document.getElementById('typing-text');
-const phrases = [
-    'Spécialiste Azure | AWS | Microservices',
-    'Expert DevOps & CI/CD',
-    'Architecture Cloud & Monitoring',
-    '15+ années d\'expérience'
-];
-
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typingSpeed = 100;
-
-function typeEffect() {
-    const currentPhrase = phrases[phraseIndex];
+function initTypingEffect() {
+    const typingText = document.getElementById('typing-text');
+    if (!typingText) return; // Exit if element doesn't exist
     
-    if (isDeleting) {
-        typingText.textContent = currentPhrase.substring(0, charIndex - 1);
-        charIndex--;
-        typingSpeed = 50;
-    } else {
-        typingText.textContent = currentPhrase.substring(0, charIndex + 1);
-        charIndex++;
-        typingSpeed = 100;
+    const phrases = [
+        'Spécialiste Azure | AWS | Microservices',
+        'Expert DevOps & CI/CD',
+        'Architecture Cloud & Monitoring',
+        '15+ années d\'expérience'
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+
+    function typeEffect() {
+        const currentPhrase = phrases[phraseIndex];
+        
+        if (isDeleting) {
+            typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = 50;
+        } else {
+            typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 100;
+        }
+        
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            isDeleting = true;
+            typingSpeed = 2000; // Pause at end
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            typingSpeed = 500; // Pause before new phrase
+        }
+        
+        setTimeout(typeEffect, typingSpeed);
     }
     
-    if (!isDeleting && charIndex === currentPhrase.length) {
-        isDeleting = true;
-        typingSpeed = 2000; // Pause at end
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        typingSpeed = 500; // Pause before new phrase
-    }
-    
-    setTimeout(typeEffect, typingSpeed);
+    typeEffect();
 }
 
-// Start typing effect after page load
-window.addEventListener('load', () => {
-    setTimeout(typeEffect, 1000);
+// Start typing effect after sections are loaded
+window.addEventListener('sectionsLoaded', () => {
+    setTimeout(initTypingEffect, 1000);
 });
 
 // ==========================================
@@ -129,53 +135,58 @@ function animateCounter(element) {
 // ==========================================
 // Intersection Observer for Animations
 // ==========================================
-const observerOptions = {
-    threshold: 0.2,
-    rootMargin: '0px 0px -100px 0px'
-};
+function initIntersectionObservers() {
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
+    };
 
-// Animate elements on scroll
-const animateOnScroll = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-            
-            // Animate counters
-            if (entry.target.classList.contains('stat-card')) {
-                const counter = entry.target.querySelector('.stat-number');
-                if (counter && !counter.classList.contains('counted')) {
-                    counter.classList.add('counted');
-                    animateCounter(counter);
+    // Animate elements on scroll
+    const animateOnScroll = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                
+                // Animate counters
+                if (entry.target.classList.contains('stat-card')) {
+                    const counter = entry.target.querySelector('.stat-number');
+                    if (counter && !counter.classList.contains('counted')) {
+                        counter.classList.add('counted');
+                        animateCounter(counter);
+                    }
+                }
+                
+                // Animate skill bars
+                if (entry.target.classList.contains('skill-category')) {
+                    const skillBars = entry.target.querySelectorAll('.skill-progress');
+                    skillBars.forEach(bar => {
+                        const progress = bar.getAttribute('data-progress');
+                        bar.style.width = progress + '%';
+                        bar.classList.add('animate');
+                    });
                 }
             }
-            
-            // Animate skill bars
-            if (entry.target.classList.contains('skill-category')) {
-                const skillBars = entry.target.querySelectorAll('.skill-progress');
-                skillBars.forEach(bar => {
-                    const progress = bar.getAttribute('data-progress');
-                    bar.style.width = progress + '%';
-                    bar.classList.add('animate');
-                });
-            }
-        }
+        });
+    }, observerOptions);
+
+    // Observe timeline items
+    document.querySelectorAll('[data-animate]').forEach(element => {
+        animateOnScroll.observe(element);
     });
-}, observerOptions);
 
-// Observe timeline items
-document.querySelectorAll('[data-animate]').forEach(element => {
-    animateOnScroll.observe(element);
-});
+    // Observe stat cards
+    document.querySelectorAll('.stat-card').forEach(card => {
+        animateOnScroll.observe(card);
+    });
 
-// Observe stat cards
-document.querySelectorAll('.stat-card').forEach(card => {
-    animateOnScroll.observe(card);
-});
+    // Observe skill categories
+    document.querySelectorAll('.skill-category').forEach(category => {
+        animateOnScroll.observe(category);
+    });
+}
 
-// Observe skill categories
-document.querySelectorAll('.skill-category').forEach(category => {
-    animateOnScroll.observe(category);
-});
+// Initialize observers after sections are loaded
+window.addEventListener('sectionsLoaded', initIntersectionObservers);
 
 // ==========================================
 // Particles Canvas Animation
