@@ -201,6 +201,10 @@ body {
     box-shadow: 0 0 50px rgba(0, 217, 255, 0.5), 0 0 100px rgba(123, 47, 247, 0.3);
     position: relative;
     animation: pulse 2s ease-in-out infinite;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .profile-image::before {
@@ -209,6 +213,16 @@ body {
     inset: 3px;
     border-radius: 50%;
     background: var(--color-darker);
+    z-index: 0;
+}
+
+.avatar-image {
+    width: 174px; /* Légèrement plus petit que le conteneur (180px) pour laisser la bordure visible */
+    height: 174px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    z-index: 1; /* Au-dessus du ::before */
 }
 
 .hero-title {
